@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using ProjetoMVC.Data;
+using ProjetoMVC.Data.Repositorio;
+using ProjetoMVC.Data.Repositorio.Interfaces;
+
 namespace ProjetoMVC
 {
     public class Program
@@ -8,6 +13,10 @@ namespace ProjetoMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionstring = builder.Configuration.GetConnectionString("StringConexao");
+            builder.Services.AddDbContext<BancoContexto>(options => options.UseSqlServer(connectionstring));
+            builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
 
             var app = builder.Build();
 

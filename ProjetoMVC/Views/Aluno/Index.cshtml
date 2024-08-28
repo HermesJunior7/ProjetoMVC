@@ -1,0 +1,28 @@
+﻿@model List<Aluno>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (Aluno aluno in Model)
+            {
+				<tr>
+				<tr>@aluno.Matricula</tr>
+				<tr>@aluno.Nome</tr>
+				<tr>@aluno.Cpf</tr>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div class="text-center">
+    <a class="bnt-primary" type="button" asp-controler="Aluno" asp-action="AdicionarAluno" > Adicionar Aluno</a>
+</div>
