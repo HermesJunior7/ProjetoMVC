@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoMVC.Data.Repositorio.Interfaces;
+using ProjetoMVC.Models;
 
 namespace ProjetoMVC.Controllers
 {
@@ -20,6 +21,19 @@ namespace ProjetoMVC.Controllers
         {
             return View();
         }
+        public IActionResult InserirAluno (Aluno aluno)
+        {
+            try
+            {
+                _alunoRepositorio.InserirAluno(aluno);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return RedirectToAction("Index");
+        } 
     }
 }
 
